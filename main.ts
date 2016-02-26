@@ -5,6 +5,7 @@ module GameModule {
 
     class mainState extends Phaser.State {
         player: Phaser.Sprite;
+        cursor: Phaser.CursorKeys;
 
         preload():void {
             super.preload();
@@ -34,10 +35,37 @@ module GameModule {
             game.physics.arcade.enable(this.player);
             // Agregamos gravedad al jugador
             this.player.body.gravity.y = 500;
+
+            // Cogemos los cursores para gestionar la entrada
+            this.cursor = game.input.keyboard.createCursorKeys();
+        }
+
+        movePlayer():void {
+            // Si pulsamos el cursor izquierdo
+            if (this.cursor.left.isDown) {
+                // Movemos al jugador a la izquierda
+                this.player.body.velocity.x = -200;
+            }
+            // Si pulsamos el cursor derecho
+            else if (this.cursor.right.isDown) {
+                // Movemos al jugador a la derecha
+                this.player.body.velocity.x = 200;
+            }
+            // Si no se pulsan ni el cursor izquierdo ni el derecho
+            else {
+                // el jugador se para
+                this.player.body.velocity.x = 0;
+            }
+            // Si pulsamos la flecha arriba y el jugador está tocando el suelo
+            if (this.cursor.up.isDown && this.player.body.touching.down) {
+                // el jugador se mueve hachi arriba (salto)
+                this.player.body.velocity.y = -320;
+            }
         }
 
         update():void {
             super.update();
+            this.movePlayer();
         }
     }
 
