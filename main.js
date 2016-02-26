@@ -11,11 +11,21 @@ var mainState = (function (_super) {
     }
     mainState.prototype.preload = function () {
         _super.prototype.preload.call(this);
+        // Precargamos el sprite del jugador
+        this.game.load.image("player", "assets/player.png");
     };
     mainState.prototype.create = function () {
         _super.prototype.create.call(this);
         this.game.stage.backgroundColor = "#3498db";
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        /*
+         Para situar al personaje en el centro de la escena utilizamos variables predefinidas
+         Otras útiles son game.world.width, game.world.height, game.world.randomX,
+         game.world.randomY
+         */
+        this.player = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'player');
+        // Cambiamos el "anchor" del jugador
+        this.player.anchor.setTo(0.5, 0.5);
     };
     mainState.prototype.update = function () {
         _super.prototype.update.call(this);
