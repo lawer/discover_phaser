@@ -103,7 +103,15 @@ module GameModule {
             // Activamos las colisiones entre el jugador y las paredes
             game.physics.arcade.collide(this.player, this.paredes);
             this.movePlayer();
+
+            if (!this.player.inWorld) {
+                this.muerte();
+            }
         }
+
+        private muerte() {
+            game.state.start('main');
+        };
     }
 
     export class SimpleGame {
