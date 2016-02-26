@@ -91,14 +91,17 @@ module GameModule {
             }
             // Si pulsamos la flecha arriba y el jugador está tocando el suelo
             if (this.cursor.up.isDown && this.player.body.touching.down) {
-                // el jugador se mueve hachi arriba (salto)
+                // el jugador se mueve hacia arriba (salto)
                 this.player.body.velocity.y = -320;
             }
         }
 
+        //Esta función se ejecuta 60 veces por segundo
         update():void {
-            //Esta función se ejecuta 60 veces por segundo
             super.update();
+
+            // Activamos las colisiones entre el jugador y las paredes
+            game.physics.arcade.collide(this.player, this.paredes);
             this.movePlayer();
         }
     }
