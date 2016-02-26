@@ -9,6 +9,7 @@ class mainState extends Phaser.State {
 
     create():void {
         super.create();
+        this.game.stage.backgroundColor = '#3498db';
     }
 
     update():void {

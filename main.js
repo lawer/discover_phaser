@@ -14,6 +14,7 @@ var mainState = (function (_super) {
     };
     mainState.prototype.create = function () {
         _super.prototype.create.call(this);
+        this.game.stage.backgroundColor = '#3498db';
     };
     mainState.prototype.update = function () {
         _super.prototype.update.call(this);

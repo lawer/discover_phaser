@@ -2,36 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbded363-c761-4b2a-9a12-24686815ba05" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/coin.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/coin.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/coin.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/dead.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/dead.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/enemy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/jump.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/jump.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/jumpButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/leftButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/muteButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/pixel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/player.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/player2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/progressBar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/rightButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/tileset.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/wallHorizontal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/wallVertical.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/map.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main.js.map" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app.js.map" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/main.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app.ts" afterPath="$PROJECT_DIR$/main.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/phaser.map" afterPath="$PROJECT_DIR$/phaser/phaser.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/phaser.min.js" afterPath="$PROJECT_DIR$/phaser/phaser.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tsconfig.json" afterPath="$PROJECT_DIR$/tsconfig.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js.map" afterPath="$PROJECT_DIR$/main.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.ts" afterPath="$PROJECT_DIR$/main.ts" />
     </list>
     <ignored path="discover_phaser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -252,6 +226,13 @@
       <option name="number" value="Default" />
       <updated>1456499302310</updated>
     </task>
+    <task id="LOCAL-00001" summary="Beginning Game">
+      <created>1456504828734</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1456504828734</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -261,6 +242,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13126491" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908458" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908458" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -287,6 +269,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="Beginning Game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Beginning Game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
