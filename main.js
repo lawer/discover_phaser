@@ -16,6 +16,28 @@ var GameModule;
             _super.prototype.preload.call(this);
             // Precargamos el sprite del jugador
             game.load.image("player", "assets/player.png");
+            game.load.image('paredV', 'assets/wallVertical.png');
+            game.load.image('paredH', 'assets/wallHorizontal.png');
+        };
+        mainState.prototype.crearMundo = function () {
+            // Creamos un grupo para las paredes y les asignamos física
+            this.paredes = game.add.group();
+            this.paredes.enableBody = true;
+            game.add.sprite(0, 0, 'paredV', 0, this.paredes); // Izquierda
+            game.add.sprite(480, 0, 'paredV', 0, this.paredes); // Derecha
+            game.add.sprite(0, 0, 'paredH', 0, this.paredes); // Arriba Izquierda
+            game.add.sprite(300, 0, 'paredH', 0, this.paredes); // Arriba Derecha
+            game.add.sprite(0, 320, 'paredH', 0, this.paredes); // Abajo Izquierda
+            game.add.sprite(300, 320, 'paredH', 0, this.paredes); // Abajo Derecha
+            game.add.sprite(-100, 160, 'paredH', 0, this.paredes); // Centro Izquierda
+            game.add.sprite(400, 160, 'paredH', 0, this.paredes); // Centro Derecha
+            // Escalamos las paredes para usar todo el espacio
+            var centroArriba = game.add.sprite(100, 80, 'paredH', 0, this.paredes);
+            centroArriba.scale.setTo(1.5, 1);
+            var centroAbajo = game.add.sprite(100, 240, 'paredH', 0, this.paredes);
+            centroAbajo.scale.setTo(1.5, 1);
+            // Set all the walls to be immovable
+            this.paredes.setAll('body.immovable', true);
         };
         mainState.prototype.create = function () {
             _super.prototype.create.call(this);
@@ -35,6 +57,7 @@ var GameModule;
             this.player.body.gravity.y = 500;
             // Cogemos los cursores para gestionar la entrada
             this.cursor = game.input.keyboard.createCursorKeys();
+            this.crearMundo();
         };
         mainState.prototype.movePlayer = function () {
             // Si pulsamos el cursor izquierdo
@@ -57,6 +80,7 @@ var GameModule;
             }
         };
         mainState.prototype.update = function () {
+            //Esta función se ejecuta 60 veces por segundo
             _super.prototype.update.call(this);
             this.movePlayer();
         };
