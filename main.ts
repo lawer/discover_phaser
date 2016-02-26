@@ -7,14 +7,16 @@ module GameModule {
         player: Phaser.Sprite;
         cursor: Phaser.CursorKeys;
         paredes: Phaser.Group;
+        moneda: Phaser.Sprite;
 
         preload():void {
             super.preload();
 
-            // Precargamos el sprite del jugador
+            // Precargamos los sprites
             game.load.image("player", "assets/player.png");
             game.load.image('paredV', 'assets/wallVertical.png');
             game.load.image('paredH', 'assets/wallHorizontal.png');
+            game.load.image('moneda', 'assets/coin.png');
         }
 
         crearMundo():void {
@@ -70,6 +72,14 @@ module GameModule {
             this.cursor = game.input.keyboard.createCursorKeys();
 
             this.crearMundo();
+
+            // Muestra la moneda
+            this.moneda = game.add.sprite(60, 140, 'moneda');
+
+            game.physics.arcade.enable(this.moneda);
+
+            // Cambiamos el "anchor" de la moneda al centro
+            this.moneda.anchor.setTo(0.5, 0.5);
         }
 
 

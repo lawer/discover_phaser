@@ -14,10 +14,11 @@ var GameModule;
         }
         mainState.prototype.preload = function () {
             _super.prototype.preload.call(this);
-            // Precargamos el sprite del jugador
+            // Precargamos los sprites
             game.load.image("player", "assets/player.png");
             game.load.image('paredV', 'assets/wallVertical.png');
             game.load.image('paredH', 'assets/wallHorizontal.png');
+            game.load.image('moneda', 'assets/coin.png');
         };
         mainState.prototype.crearMundo = function () {
             // Creamos un grupo para las paredes y les asignamos física
@@ -58,6 +59,11 @@ var GameModule;
             // Cogemos los cursores para gestionar la entrada
             this.cursor = game.input.keyboard.createCursorKeys();
             this.crearMundo();
+            // Muestra la moneda
+            this.moneda = game.add.sprite(60, 140, 'moneda');
+            game.physics.arcade.enable(this.moneda);
+            // Cambiamos el "anchor" de la moneda al centro
+            this.moneda.anchor.setTo(0.5, 0.5);
         };
         mainState.prototype.movePlayer = function () {
             // Si pulsamos el cursor izquierdo
