@@ -9,7 +9,8 @@ class mainState extends Phaser.State {
 
     create():void {
         super.create();
-        this.game.stage.backgroundColor = '#3498db';
+        this.game.stage.backgroundColor = "#3498db";
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
     }
 
     update():void {
@@ -21,10 +22,10 @@ class SimpleGame {
     game:Phaser.Game;
 
     constructor() {
-        this.game = new Phaser.Game(500, 340, Phaser.AUTO, 'gameDiv');
+        this.game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
 
-        this.game.state.add('main', mainState);
-        this.game.state.start('main');
+        this.game.state.add("main", mainState);
+        this.game.state.start("main");
     }
 }
 

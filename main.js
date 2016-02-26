@@ -14,7 +14,8 @@ var mainState = (function (_super) {
     };
     mainState.prototype.create = function () {
         _super.prototype.create.call(this);
-        this.game.stage.backgroundColor = '#3498db';
+        this.game.stage.backgroundColor = "#3498db";
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
     };
     mainState.prototype.update = function () {
         _super.prototype.update.call(this);
@@ -23,9 +24,9 @@ var mainState = (function (_super) {
 })(Phaser.State);
 var SimpleGame = (function () {
     function SimpleGame() {
-        this.game = new Phaser.Game(500, 340, Phaser.AUTO, 'gameDiv');
-        this.game.state.add('main', mainState);
-        this.game.state.start('main');
+        this.game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
+        this.game.state.add("main", mainState);
+        this.game.state.start("main");
     }
     return SimpleGame;
 })();
