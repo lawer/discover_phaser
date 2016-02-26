@@ -6,6 +6,6 @@
     "experimentalDecorators": true
   },
   "files": [
-    "app.ts"
+    "main.ts"
   ]
 }

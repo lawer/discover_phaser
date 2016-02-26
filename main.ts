@@ -1,6 +1,8 @@
 /// <reference path="phaser/phaser.d.ts"/>
 
 class mainState extends Phaser.State {
+    game: Phaser.Game;
+
     preload():void {
         super.preload();
     }
@@ -18,9 +20,10 @@ class SimpleGame {
     game:Phaser.Game;
 
     constructor() {
-        this.game = new Phaser.Game(800, 600, Phaser.AUTO, 'content');
-        game.state.add('main', mainState);
-        game.state.start('main');
+        this.game = new Phaser.Game(500, 340, Phaser.AUTO, 'gameDiv');
+
+        this.game.state.add('main', mainState);
+        this.game.state.start('main');
     }
 }
 
