@@ -1,50 +1,57 @@
 /// <reference path="phaser/phaser.d.ts"/>
 
-class mainState extends Phaser.State {
-    game: Phaser.Game;
-    player: Phaser.Sprite;
+module GameModule {
+    var game: Phaser.Game;
 
-    preload():void {
-        super.preload();
-        // Precargamos el sprite del jugador
-        this.game.load.image("player", "assets/player.png");
+    class mainState extends Phaser.State {
+        player: Phaser.Sprite;
+
+        preload():void {
+            super.preload();
+            // Precargamos el sprite del jugador
+            game.load.image("player", "assets/player.png");
+        }
+
+        create():void {
+            super.create();
+            game.stage.backgroundColor = "#3498db";
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+
+            /*
+             Para situar al personaje en el centro de la escena utilizamos variables predefinidas
+             Otras útiles son game.world.width, game.world.height, game.world.randomX,
+             game.world.randomY
+             */
+            this.player = this.game.add.sprite(
+                game.world.centerX,
+                game.world.centerY,
+                'player');
+
+            // Cambiamos el "anchor" del jugador
+            this.player.anchor.setTo(0.5, 0.5);
+
+            // Le decimos a Phaser que el usuario usará el motor de físicas Arcade
+            game.physics.arcade.enable(this.player);
+            // Agregamos gravedad al jugador
+            this.player.body.gravity.y = 500;
+        }
+
+        update():void {
+            super.update();
+        }
     }
 
-    create():void {
-        super.create();
-        this.game.stage.backgroundColor = "#3498db";
-        this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    export class SimpleGame {
 
-        /*
-         Para situar al personaje en el centro de la escena utilizamos variables predefinidas
-         Otras útiles son game.world.width, game.world.height, game.world.randomX,
-         game.world.randomY
-         */
-        this.player = this.game.add.sprite(
-            this.game.world.centerX,
-            this.game.world.centerY,
-            'player');
+        constructor() {
+            game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
 
-        // Cambiamos el "anchor" del jugador
-        this.player.anchor.setTo(0.5, 0.5);
-    }
-
-    update():void {
-        super.update();
-    }
-}
-
-class SimpleGame {
-    game:Phaser.Game;
-
-    constructor() {
-        this.game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
-
-        this.game.state.add("main", mainState);
-        this.game.state.start("main");
+            game.state.add("main", mainState);
+            game.state.start("main");
+        }
     }
 }
 
 window.onload = () => {
-    var game = new SimpleGame();
+    var game = new GameModule.SimpleGame();
 };
