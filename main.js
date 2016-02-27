@@ -20,7 +20,6 @@ var GameModule;
             this.load.image('paredH', 'assets/wallHorizontal.png');
             this.load.image('moneda', 'assets/coin.png');
             this.load.image('enemigo', 'assets/enemy.png');
-            ;
         };
         mainState.prototype.create = function () {
             _super.prototype.create.call(this);
@@ -99,6 +98,25 @@ var GameModule;
             // Creamos 10 enemigos de una vez
             // Los enemigos están muertos por defecto por lo que no serán visibles al principio.
             this.enemigos.createMultiple(10, 'enemigo');
+            // Ejecuta la función "agregaEnemigo" cada 2.2 secs
+            this.time.events.loop(2200, this.agregaEnemigo, this);
+        };
+        ;
+        mainState.prototype.agregaEnemigo = function () {
+            // Obten el primer enemigo muerto
+            var enemigo = this.enemigos.getFirstDead();
+            // Si no conseguimos ningun enemigo "return"
+            if (!enemigo) {
+                return;
+            }
+            // Initialise the enemy
+            enemigo.anchor.setTo(0.5, 1);
+            enemigo.reset(this.world.centerX, 0);
+            enemigo.body.gravity.y = 500;
+            enemigo.body.velocity.x = 100 * this.rnd.sign();
+            enemigo.body.bounce.x = 1;
+            enemigo.checkWorldBounds = true;
+            enemigo.outOfBoundsKill = true;
         };
         ;
         //Esta función se ejecuta 60 veces por segundo
@@ -111,6 +129,9 @@ var GameModule;
                 this.muerte();
             }
             this.physics.arcade.overlap(this.player, this.moneda, this.cogerMoneda, null, this);
+            this.physics.arcade.collide(this.enemigos, this.paredes);
+            // Si el jugador colisiona con un enemigo matamos al jugador
+            this.physics.arcade.overlap(this.player, this.enemigos, this.muerte, null, this);
         };
         mainState.prototype.movePlayer = function () {
             // Si pulsamos el cursor izquierdo
