@@ -54,6 +54,49 @@ module GameModule {
 
     }
 
+    class MenuState extends Phaser.State {
+        create():void {
+            // Imagen de fondo
+            this.add.image(0, 0, 'fondo');
+
+            // Nombre del juego
+            var nameLabel = this.add.text(
+                this.world.centerX, 80, 'Super Coin Box',
+                { font: '50px Arial', fill: '#ffffff' }
+            );
+            nameLabel.anchor.setTo(0.5, 0.5);
+
+            // Puntuación
+            var scoreLabel = this.add.text(
+                this.world.centerX,
+                this.world.centerY,
+                'puntos: ' + this.game["global"].puntos,
+                { font: '25px Arial', fill: '#ffffff' }
+            );
+            scoreLabel.anchor.setTo(0.5, 0.5);
+
+            // Información de como empezar
+            var startLabel = this.add.text(
+                this.world.centerX,
+                this.world.height-80,
+                'press the up arrow key to start',
+                { font: '25px Arial', fill: '#ffffff' }
+            );
+            startLabel.anchor.setTo(0.5, 0.5);
+
+            // Capturamos la flecha arriba
+            var flechaArriba = this.input.keyboard.addKey(Phaser.Keyboard.UP);
+
+            // Cuando la pulsemos llamará a la función empezar
+            flechaArriba.onDown.addOnce(this.empezar, this);
+        }
+
+        empezar():void {
+            // Start the actual game
+            this.game.state.start('play');
+        }
+    }
+
     class MainState extends Phaser.State {
         player:Phaser.Sprite;
         cursor:Phaser.CursorKeys;
@@ -263,8 +306,16 @@ module GameModule {
         constructor() {
             this.game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
 
-            this.game.state.add("main", MainState);
-            this.game.state.start("main");
+            this.game["global"] = {
+                puntos: 0
+            };
+
+            this.game.state.add("boot", BootState);
+            this.game.state.add("load", LoadState);
+            this.game.state.add("menu", MenuState);
+
+
+            this.game.state.start("boot");
         }
     }
 }
