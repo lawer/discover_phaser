@@ -20,6 +20,40 @@ var GameModule;
             this.load.image('paredH', 'assets/wallHorizontal.png');
             this.load.image('moneda', 'assets/coin.png');
         };
+        mainState.prototype.create = function () {
+            _super.prototype.create.call(this);
+            this.inicializaCampoDeJuego();
+            this.creaJugador();
+            this.capturaCursores();
+            this.crearMundo();
+            this.creaMoneda();
+            this.inicializaPuntuacion();
+        };
+        mainState.prototype.inicializaCampoDeJuego = function () {
+            this.stage.backgroundColor = "#3498db";
+            this.physics.startSystem(Phaser.Physics.ARCADE);
+        };
+        ;
+        mainState.prototype.creaJugador = function () {
+            /*
+             Para situar al personaje en el centro de la escena utilizamos variables predefinidas
+             Otras útiles son this.world.width, this.world.height, this.world.randomX,
+             this.world.randomY
+             */
+            this.player = this.add.sprite(this.world.centerX, this.world.centerY, 'player');
+            // Cambiamos el "anchor" del jugador
+            this.player.anchor.setTo(0.5, 0.5);
+            // Le decimos a Phaser que el usuario usará el motor de físicas Arcade
+            this.physics.arcade.enable(this.player);
+            // Agregamos gravedad al jugador
+            this.player.body.gravity.y = 500;
+        };
+        ;
+        mainState.prototype.capturaCursores = function () {
+            // Cogemos los cursores para gestionar la entrada
+            this.cursor = this.input.keyboard.createCursorKeys();
+        };
+        ;
         mainState.prototype.crearMundo = function () {
             // Creamos un grupo para las paredes y les asignamos física
             this.paredes = this.add.group();
@@ -40,34 +74,31 @@ var GameModule;
             // Set all the walls to be immovable
             this.paredes.setAll('body.immovable', true);
         };
-        mainState.prototype.create = function () {
-            _super.prototype.create.call(this);
-            this.stage.backgroundColor = "#3498db";
-            this.physics.startSystem(Phaser.Physics.ARCADE);
-            /*
-             Para situar al personaje en el centro de la escena utilizamos variables predefinidas
-             Otras útiles son this.world.width, this.world.height, this.world.randomX,
-             this.world.randomY
-             */
-            this.player = this.add.sprite(this.world.centerX, this.world.centerY, 'player');
-            // Cambiamos el "anchor" del jugador
-            this.player.anchor.setTo(0.5, 0.5);
-            // Le decimos a Phaser que el usuario usará el motor de físicas Arcade
-            this.physics.arcade.enable(this.player);
-            // Agregamos gravedad al jugador
-            this.player.body.gravity.y = 500;
-            // Cogemos los cursores para gestionar la entrada
-            this.cursor = this.input.keyboard.createCursorKeys();
-            this.crearMundo();
+        mainState.prototype.creaMoneda = function () {
             // Muestra la moneda
             this.moneda = this.add.sprite(60, 140, 'moneda');
             this.physics.arcade.enable(this.moneda);
             // Cambiamos el "anchor" de la moneda al centro
             this.moneda.anchor.setTo(0.5, 0.5);
+        };
+        ;
+        mainState.prototype.inicializaPuntuacion = function () {
             // Muestra la puntuación
             this.etiquetaPuntos = this.add.text(30, 30, 'puntos: 0', { font: '18px Arial', fill: '#ffffff' });
             // Incializa la variable con la puntuación
             this.puntos = 0;
+        };
+        ;
+        //Esta función se ejecuta 60 veces por segundo
+        mainState.prototype.update = function () {
+            _super.prototype.update.call(this);
+            // Activamos las colisiones entre el jugador y las paredes
+            this.physics.arcade.collide(this.player, this.paredes);
+            this.movePlayer();
+            if (!this.player.inWorld) {
+                this.muerte();
+            }
+            this.physics.arcade.overlap(this.player, this.moneda, this.cogerMoneda, null, this);
         };
         mainState.prototype.movePlayer = function () {
             // Si pulsamos el cursor izquierdo
@@ -89,21 +120,17 @@ var GameModule;
                 this.player.body.velocity.y = -320;
             }
         };
-        //Esta función se ejecuta 60 veces por segundo
-        mainState.prototype.update = function () {
-            _super.prototype.update.call(this);
-            // Activamos las colisiones entre el jugador y las paredes
-            this.physics.arcade.collide(this.player, this.paredes);
-            this.movePlayer();
-            if (!this.player.inWorld) {
-                this.muerte();
-            }
-            this.physics.arcade.overlap(this.player, this.moneda, this.cogerMoneda, null, this);
-        };
         mainState.prototype.muerte = function () {
             this.game.state.start('main');
         };
         ;
+        mainState.prototype.cogerMoneda = function (jugador, moneda) {
+            this.cambiaPosicionMoneda();
+            // Incrementamos la puntuación
+            this.puntos += 5;
+            // Actualizamos la etiqueta con la puntuación
+            this.etiquetaPuntos.text = 'puntos: ' + this.puntos;
+        };
         mainState.prototype.cambiaPosicionMoneda = function () {
             // Creamos un array con todas las posibles posiciones que podrà tomar la moneda
             var posiciones = [
@@ -125,13 +152,6 @@ var GameModule;
             var newPosition = this.rnd.pick(posiciones);
             // Situamos la moneda en la nueva posición.
             this.moneda.reset(newPosition.x, newPosition.y);
-        };
-        mainState.prototype.cogerMoneda = function (jugador, moneda) {
-            this.cambiaPosicionMoneda();
-            // Incrementamos la puntuación
-            this.puntos += 5;
-            // Actualizamos la etiqueta con la puntuación
-            this.etiquetaPuntos.text = 'puntos: ' + this.puntos;
         };
         return mainState;
     })(Phaser.State);
