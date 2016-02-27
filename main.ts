@@ -4,7 +4,6 @@ module GameModule {
     import Point = Phaser.Point;
 
     class BootState extends Phaser.State {
-
         preload():void {
             super.preload();
             this.load.image('progressBar', 'assets/progressBar.png');
@@ -14,7 +13,6 @@ module GameModule {
             super.create();
 
             this.inicializaCampoDeJuego();
-            // Start the load state
             this.game.state.start('load');
         }
 
@@ -22,6 +20,38 @@ module GameModule {
             this.stage.backgroundColor = "#3498db";
             this.physics.startSystem(Phaser.Physics.ARCADE);
         };
+    }
+
+    class LoadState extends Phaser.State {
+        preload():void {
+            super.preload()
+
+            // Agregamos un texto de cargando a la pantalla
+            var etiquetaCargando = this.add.text(this.world.centerX, 150, 'cargando...',
+                { font: '30px Arial', fill: '#ffffff' });
+            etiquetaCargando.anchor.setTo(0.5, 0.5);
+
+            // Muestra la barra de progreso
+            var progressBar = this.add.sprite(this.world.centerX, 200, 'progressBar');
+            progressBar.anchor.setTo(0.5, 0.5);
+            this.load.setPreloadSprite(progressBar);
+
+            // Precargamos los sprites
+            this.load.image("player", "assets/player.png");
+            this.load.image('paredV', 'assets/wallVertical.png');
+            this.load.image('paredH', 'assets/wallHorizontal.png');
+            this.load.image('moneda', 'assets/coin.png');
+            this.load.image('enemigo', 'assets/enemy.png');
+
+            // Cargamos una imagen que hará de fondo en la pantalla de menu
+            this.load.image('fondo', 'assets/background.png');
+        }
+
+        create():void {
+            super.create();
+            this.game.state.start('menu');
+        }
+
     }
 
     class MainState extends Phaser.State {
@@ -33,21 +63,8 @@ module GameModule {
         puntos:number;
         private enemigos:Phaser.Group;
 
-
-        preload():void {
-            super.preload();
-
-            // Precargamos los sprites
-            this.load.image("player", "assets/player.png");
-            this.load.image('paredV', 'assets/wallVertical.png');
-            this.load.image('paredH', 'assets/wallHorizontal.png');
-            this.load.image('moneda', 'assets/coin.png');
-            this.load.image('enemigo', 'assets/enemy.png');
-        }
-
         create():void {
             super.create();
-            this.inicializaCampoDeJuego();
             this.creaJugador();
             this.capturaCursores();
             this.crearMundo();

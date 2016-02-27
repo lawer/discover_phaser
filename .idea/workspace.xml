@@ -49,8 +49,8 @@
       <file leaf-file-name="main.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6276923">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.34">
+              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -349,7 +349,19 @@
       <option name="project" value="LOCAL" />
       <updated>1456610861622</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Empezamos la separación en varios &quot;States&quot;">
+      <created>1456612183624</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1456612183624</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Creamos el estado de carga y la barra de progreso">
+      <created>1456612820084</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1456612820084</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -435,7 +447,9 @@
     <MESSAGE value="Seguimos refactorizando" />
     <MESSAGE value="Precargamos los enemigos" />
     <MESSAGE value="Agregamos los enemigos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregamos los enemigos" />
+    <MESSAGE value="Empezamos la separación en varios &quot;States&quot;" />
+    <MESSAGE value="Creamos el estado de carga y la barra de progreso" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creamos el estado de carga y la barra de progreso" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -599,8 +613,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6276923">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.34">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
           <folding />
         </state>
       </provider>
