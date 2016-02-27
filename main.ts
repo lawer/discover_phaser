@@ -10,6 +10,7 @@ module GameModule {
         moneda:Phaser.Sprite;
         etiquetaPuntos:Phaser.Text;
         puntos:number;
+        private enemigos:Phaser.Group;
 
 
         preload():void {
@@ -19,7 +20,8 @@ module GameModule {
             this.load.image("player", "assets/player.png");
             this.load.image('paredV', 'assets/wallVertical.png');
             this.load.image('paredH', 'assets/wallHorizontal.png');
-            this.load.image('moneda', 'assets/coin.png');
+            this.load.image('moneda', 'assets/coin.png')
+            this.load.image('enemigo', 'assets/enemy.png');;
         }
 
         create():void {
@@ -30,6 +32,7 @@ module GameModule {
             this.crearMundo();
             this.creaMoneda();
             this.inicializaPuntuacion();
+            this.creaEnemigos();
         }
 
         private inicializaCampoDeJuego() {
@@ -103,6 +106,16 @@ module GameModule {
             this.etiquetaPuntos = this.add.text(30, 30, 'puntos: 0', {font: '18px Arial', fill: '#ffffff'});
             // Incializa la variable con la puntuación
             this.puntos = 0;
+        };
+
+        private creaEnemigos() {
+            // Create el grupo de enemigos con física Arcade
+            this.enemigos = this.game.add.group();
+            this.enemigos.enableBody = true;
+
+            // Creamos 10 enemigos de una vez
+            // Los enemigos están muertos por defecto por lo que no serán visibles al principio.
+            this.enemigos.createMultiple(10, 'enemigo');
         };
 
         //Esta función se ejecuta 60 veces por segundo
