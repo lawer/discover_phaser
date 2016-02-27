@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbded363-c761-4b2a-9a12-24686815ba05" name="Default" comment="Cambio de lugar de la moneda - Primer intento">
+    <list default="true" id="cbded363-c761-4b2a-9a12-24686815ba05" name="Default" comment="Refactorizamos">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js.map" afterPath="$PROJECT_DIR$/main.js.map" />
@@ -49,8 +49,8 @@
       <file leaf-file-name="main.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.8646154">
-              <caret line="186" column="2" selection-start-line="186" selection-start-column="2" selection-end-line="186" selection-end-column="2" />
+            <state vertical-scroll-proportion="3.5307693">
+              <caret line="135" column="40" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -319,7 +319,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456580417284</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Refactorizamos">
+      <created>1456606272487</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1456606272487</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -400,7 +406,8 @@
     <MESSAGE value="Variables para puntuación" />
     <MESSAGE value="Implementamos la lógica para coger monedas y sumar puntos" />
     <MESSAGE value="Cambio de lugar de la moneda - Primer intento" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambio de lugar de la moneda - Primer intento" />
+    <MESSAGE value="Refactorizamos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactorizamos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -564,8 +571,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.8646154">
-          <caret line="186" column="2" selection-start-line="186" selection-start-column="2" selection-end-line="186" selection-end-column="2" />
+        <state vertical-scroll-proportion="3.5307693">
+          <caret line="135" column="40" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
           <folding />
         </state>
       </provider>

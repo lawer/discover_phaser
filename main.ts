@@ -16,32 +16,32 @@ module GameModule {
             super.preload();
 
             // Precargamos los sprites
-            this.game.load.image("player", "assets/player.png");
-            this.game.load.image('paredV', 'assets/wallVertical.png');
-            this.game.load.image('paredH', 'assets/wallHorizontal.png');
-            this.game.load.image('moneda', 'assets/coin.png');
+            this.load.image("player", "assets/player.png");
+            this.load.image('paredV', 'assets/wallVertical.png');
+            this.load.image('paredH', 'assets/wallHorizontal.png');
+            this.load.image('moneda', 'assets/coin.png');
         }
 
         crearMundo():void {
             // Creamos un grupo para las paredes y les asignamos física
-            this.paredes = this.game.add.group();
+            this.paredes = this.add.group();
             this.paredes.enableBody = true;
 
-            this.game.add.sprite(0, 0, 'paredV', 0, this.paredes); // Izquierda
-            this.game.add.sprite(480, 0, 'paredV', 0, this.paredes); // Derecha
+            this.add.sprite(0, 0, 'paredV', 0, this.paredes); // Izquierda
+            this.add.sprite(480, 0, 'paredV', 0, this.paredes); // Derecha
 
-            this.game.add.sprite(0, 0, 'paredH', 0, this.paredes); // Arriba Izquierda
-            this.game.add.sprite(300, 0, 'paredH', 0, this.paredes); // Arriba Derecha
-            this.game.add.sprite(0, 320, 'paredH', 0, this.paredes); // Abajo Izquierda
-            this.game.add.sprite(300, 320, 'paredH', 0, this.paredes); // Abajo Derecha
+            this.add.sprite(0, 0, 'paredH', 0, this.paredes); // Arriba Izquierda
+            this.add.sprite(300, 0, 'paredH', 0, this.paredes); // Arriba Derecha
+            this.add.sprite(0, 320, 'paredH', 0, this.paredes); // Abajo Izquierda
+            this.add.sprite(300, 320, 'paredH', 0, this.paredes); // Abajo Derecha
 
-            this.game.add.sprite(-100, 160, 'paredH', 0, this.paredes); // Centro Izquierda
-            this.game.add.sprite(400, 160, 'paredH', 0, this.paredes); // Centro Derecha
+            this.add.sprite(-100, 160, 'paredH', 0, this.paredes); // Centro Izquierda
+            this.add.sprite(400, 160, 'paredH', 0, this.paredes); // Centro Derecha
 
             // Escalamos las paredes para usar todo el espacio
-            var centroArriba = this.game.add.sprite(100, 80, 'paredH', 0, this.paredes);
+            var centroArriba = this.add.sprite(100, 80, 'paredH', 0, this.paredes);
             centroArriba.scale.setTo(1.5, 1);
-            var centroAbajo = this.game.add.sprite(100, 240, 'paredH', 0, this.paredes);
+            var centroAbajo = this.add.sprite(100, 240, 'paredH', 0, this.paredes);
             centroAbajo.scale.setTo(1.5, 1);
 
             // Set all the walls to be immovable
@@ -50,42 +50,42 @@ module GameModule {
 
         create():void {
             super.create();
-            this.game.stage.backgroundColor = "#3498db";
-            this.game.physics.startSystem(Phaser.Physics.ARCADE);
+            this.stage.backgroundColor = "#3498db";
+            this.physics.startSystem(Phaser.Physics.ARCADE);
 
             /*
              Para situar al personaje en el centro de la escena utilizamos variables predefinidas
-             Otras útiles son this.game.world.width, this.game.world.height, this.game.world.randomX,
-             this.game.world.randomY
+             Otras útiles son this.world.width, this.world.height, this.world.randomX,
+             this.world.randomY
              */
-            this.player = this.game.add.sprite(
-                this.game.world.centerX,
-                this.game.world.centerY,
+            this.player = this.add.sprite(
+                this.world.centerX,
+                this.world.centerY,
                 'player');
 
             // Cambiamos el "anchor" del jugador
             this.player.anchor.setTo(0.5, 0.5);
 
             // Le decimos a Phaser que el usuario usará el motor de físicas Arcade
-            this.game.physics.arcade.enable(this.player);
+            this.physics.arcade.enable(this.player);
             // Agregamos gravedad al jugador
             this.player.body.gravity.y = 500;
 
             // Cogemos los cursores para gestionar la entrada
-            this.cursor = this.game.input.keyboard.createCursorKeys();
+            this.cursor = this.input.keyboard.createCursorKeys();
 
             this.crearMundo();
 
             // Muestra la moneda
-            this.moneda = this.game.add.sprite(60, 140, 'moneda');
+            this.moneda = this.add.sprite(60, 140, 'moneda');
 
-            this.game.physics.arcade.enable(this.moneda);
+            this.physics.arcade.enable(this.moneda);
 
             // Cambiamos el "anchor" de la moneda al centro
             this.moneda.anchor.setTo(0.5, 0.5);
 
             // Muestra la puntuación
-            this.etiquetaPuntos = this.game.add.text(30, 30, 'puntos: 0', { font: '18px Arial', fill: '#ffffff' });
+            this.etiquetaPuntos = this.add.text(30, 30, 'puntos: 0', { font: '18px Arial', fill: '#ffffff' });
             // Incializa la variable con la puntuación
             this.puntos = 0;
         }
@@ -119,14 +119,14 @@ module GameModule {
             super.update();
 
             // Activamos las colisiones entre el jugador y las paredes
-            this.game.physics.arcade.collide(this.player, this.paredes);
+            this.physics.arcade.collide(this.player, this.paredes);
             this.movePlayer();
 
             if (!this.player.inWorld) {
                 this.muerte();
             }
 
-            this.game.physics.arcade.overlap(this.player, this.moneda, this.cogerMoneda, null, this);
+            this.physics.arcade.overlap(this.player, this.moneda, this.cogerMoneda, null, this);
         }
 
         private muerte() {
@@ -153,7 +153,7 @@ module GameModule {
             }
 
             // Elegimos la nueva posición aleatoriamente.
-            var newPosition = this.game.rnd.pick(posiciones);
+            var newPosition = this.rnd.pick(posiciones);
 
             // Situamos la moneda en la nueva posición.
             this.moneda.reset(newPosition.x, newPosition.y);
