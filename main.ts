@@ -3,7 +3,28 @@
 module GameModule {
     import Point = Phaser.Point;
 
-    class mainState extends Phaser.State {
+    class BootState extends Phaser.State {
+
+        preload():void {
+            super.preload();
+            this.load.image('progressBar', 'assets/progressBar.png');
+        }
+
+        create():void {
+            super.create();
+
+            this.inicializaCampoDeJuego();
+            // Start the load state
+            this.game.state.start('load');
+        }
+
+        private inicializaCampoDeJuego() {
+            this.stage.backgroundColor = "#3498db";
+            this.physics.startSystem(Phaser.Physics.ARCADE);
+        };
+    }
+
+    class MainState extends Phaser.State {
         player:Phaser.Sprite;
         cursor:Phaser.CursorKeys;
         paredes:Phaser.Group;
@@ -20,7 +41,7 @@ module GameModule {
             this.load.image("player", "assets/player.png");
             this.load.image('paredV', 'assets/wallVertical.png');
             this.load.image('paredH', 'assets/wallHorizontal.png');
-            this.load.image('moneda', 'assets/coin.png')
+            this.load.image('moneda', 'assets/coin.png');
             this.load.image('enemigo', 'assets/enemy.png');
         }
 
@@ -34,11 +55,6 @@ module GameModule {
             this.inicializaPuntuacion();
             this.creaEnemigos();
         }
-
-        private inicializaCampoDeJuego() {
-            this.stage.backgroundColor = "#3498db";
-            this.physics.startSystem(Phaser.Physics.ARCADE);
-        };
 
         private creaJugador() {
             /*
@@ -230,7 +246,7 @@ module GameModule {
         constructor() {
             this.game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
 
-            this.game.state.add("main", mainState);
+            this.game.state.add("main", MainState);
             this.game.state.start("main");
         }
     }
