@@ -134,8 +134,10 @@ module GameModule {
         };
 
         private cogerMoneda(jugador:Phaser.Sprite, moneda:Phaser.Sprite) {
-            // La función "Kill" hace que la moneda desaparezca del juego
-            this.moneda.kill();
+            var newX = game.rnd.integerInRange(10, game.world.width - 20);
+            var newY = game.rnd.integerInRange(10, game.world.height - 20);
+
+            this.moneda.reset(newX, newY);
 
             // Incrementamos la puntuación
             this.puntos += 5;

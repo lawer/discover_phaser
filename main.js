@@ -105,9 +105,10 @@ var GameModule;
         };
         ;
         mainState.prototype.cogerMoneda = function (jugador, moneda) {
-            // La función "Kill" hace que la moneda desaparezca del juego
-            this.moneda.kill();
-            // Increase la puntuación
+            var newX = game.rnd.integerInRange(10, game.world.width - 20);
+            var newY = game.rnd.integerInRange(10, game.world.height - 20);
+            this.moneda.reset(newX, newY);
+            // Incrementamos la puntuación
             this.puntos += 5;
             // Actualizamos la etiqueta con la puntuación
             this.etiquetaPuntos.text = 'puntos: ' + this.puntos;
