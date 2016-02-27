@@ -49,9 +49,11 @@
       <file leaf-file-name="main.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="12.716536">
-              <caret line="314" column="51" selection-start-line="314" selection-start-column="51" selection-end-line="314" selection-end-column="51" />
-              <folding />
+            <state vertical-scroll-proportion="0.22">
+              <caret line="273" column="56" selection-start-line="273" selection-start-column="56" selection-end-line="273" selection-end-column="56" />
+              <folding>
+                <marker date="1456616540000" expanded="true" signature="2469:2496" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -367,7 +369,19 @@
       <option name="project" value="LOCAL" />
       <updated>1456612974259</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="MenuState">
+      <created>1456615449502</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1456615449502</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Mejoramos la gestión de las globales">
+      <created>1456616079844</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1456616079844</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -394,7 +408,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20015885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39675516" sideWeight="0.52505964" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39675516" sideWeight="0.52505964" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -455,7 +469,9 @@
     <MESSAGE value="Agregamos los enemigos" />
     <MESSAGE value="Empezamos la separación en varios &quot;States&quot;" />
     <MESSAGE value="Creamos el estado de carga y la barra de progreso" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creamos el estado de carga y la barra de progreso" />
+    <MESSAGE value="MenuState" />
+    <MESSAGE value="Mejoramos la gestión de las globales" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mejoramos la gestión de las globales" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -482,7 +498,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1456616540000" expanded="true" signature="2469:2496" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -530,7 +548,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-          <folding />
+          <folding>
+            <marker date="1456616540000" expanded="true" signature="2469:2496" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -619,9 +639,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.716536">
-          <caret line="314" column="51" selection-start-line="314" selection-start-column="51" selection-end-line="314" selection-end-column="51" />
-          <folding />
+        <state vertical-scroll-proportion="0.22">
+          <caret line="273" column="56" selection-start-line="273" selection-start-column="56" selection-end-line="273" selection-end-column="56" />
+          <folding>
+            <marker date="1456616540000" expanded="true" signature="2469:2496" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -61,6 +61,7 @@ var GameModule;
         __extends(MenuState, _super);
         function MenuState() {
             _super.apply(this, arguments);
+            this.global = this.game.global;
         }
         MenuState.prototype.create = function () {
             // Imagen de fondo
@@ -69,7 +70,7 @@ var GameModule;
             var nameLabel = this.add.text(this.world.centerX, 80, 'Super Coin Box', { font: '50px Arial', fill: '#ffffff' });
             nameLabel.anchor.setTo(0.5, 0.5);
             // Puntuación
-            var scoreLabel = this.add.text(this.world.centerX, this.world.centerY, 'puntos: ' + this.game["global"].puntos, { font: '25px Arial', fill: '#ffffff' });
+            var scoreLabel = this.add.text(this.world.centerX, this.world.centerY, 'puntos: ' + this.global.puntos, { font: '25px Arial', fill: '#ffffff' });
             scoreLabel.anchor.setTo(0.5, 0.5);
             // Información de como empezar
             var startLabel = this.add.text(this.world.centerX, this.world.height - 80, 'press the up arrow key to start', { font: '25px Arial', fill: '#ffffff' });
@@ -85,12 +86,13 @@ var GameModule;
         };
         return MenuState;
     })(Phaser.State);
-    var MainState = (function (_super) {
-        __extends(MainState, _super);
-        function MainState() {
+    var PlayState = (function (_super) {
+        __extends(PlayState, _super);
+        function PlayState() {
             _super.apply(this, arguments);
+            this.global = this.game.global;
         }
-        MainState.prototype.create = function () {
+        PlayState.prototype.create = function () {
             _super.prototype.create.call(this);
             this.creaJugador();
             this.capturaCursores();
@@ -99,7 +101,7 @@ var GameModule;
             this.inicializaPuntuacion();
             this.creaEnemigos();
         };
-        MainState.prototype.creaJugador = function () {
+        PlayState.prototype.creaJugador = function () {
             /*
              Para situar al personaje en el centro de la escena utilizamos variables predefinidas
              Otras útiles son this.world.width, this.world.height, this.world.randomX,
@@ -114,12 +116,12 @@ var GameModule;
             this.player.body.gravity.y = 500;
         };
         ;
-        MainState.prototype.capturaCursores = function () {
+        PlayState.prototype.capturaCursores = function () {
             // Cogemos los cursores para gestionar la entrada
             this.cursor = this.input.keyboard.createCursorKeys();
         };
         ;
-        MainState.prototype.crearMundo = function () {
+        PlayState.prototype.crearMundo = function () {
             // Creamos un grupo para las paredes y les asignamos física
             this.paredes = this.add.group();
             this.paredes.enableBody = true;
@@ -139,7 +141,7 @@ var GameModule;
             // Set all the walls to be immovable
             this.paredes.setAll('body.immovable', true);
         };
-        MainState.prototype.creaMoneda = function () {
+        PlayState.prototype.creaMoneda = function () {
             // Muestra la moneda
             this.moneda = this.add.sprite(60, 140, 'moneda');
             this.physics.arcade.enable(this.moneda);
@@ -147,14 +149,14 @@ var GameModule;
             this.moneda.anchor.setTo(0.5, 0.5);
         };
         ;
-        MainState.prototype.inicializaPuntuacion = function () {
+        PlayState.prototype.inicializaPuntuacion = function () {
             // Muestra la puntuación
             this.etiquetaPuntos = this.add.text(30, 30, 'puntos: 0', { font: '18px Arial', fill: '#ffffff' });
             // Incializa la variable con la puntuación
-            this.puntos = 0;
+            this.global.puntos = 0;
         };
         ;
-        MainState.prototype.creaEnemigos = function () {
+        PlayState.prototype.creaEnemigos = function () {
             // Create el grupo de enemigos con física Arcade
             this.enemigos = this.game.add.group();
             this.enemigos.enableBody = true;
@@ -165,7 +167,7 @@ var GameModule;
             this.time.events.loop(2200, this.agregaEnemigo, this);
         };
         ;
-        MainState.prototype.agregaEnemigo = function () {
+        PlayState.prototype.agregaEnemigo = function () {
             // Obten el primer enemigo muerto
             var enemigo = this.enemigos.getFirstDead();
             // Si no conseguimos ningun enemigo "return"
@@ -183,7 +185,7 @@ var GameModule;
         };
         ;
         //Esta función se ejecuta 60 veces por segundo
-        MainState.prototype.update = function () {
+        PlayState.prototype.update = function () {
             _super.prototype.update.call(this);
             // Activamos las colisiones entre el jugador y las paredes
             this.physics.arcade.collide(this.player, this.paredes);
@@ -196,7 +198,7 @@ var GameModule;
             // Si el jugador colisiona con un enemigo matamos al jugador
             this.physics.arcade.overlap(this.player, this.enemigos, this.muerte, null, this);
         };
-        MainState.prototype.movePlayer = function () {
+        PlayState.prototype.movePlayer = function () {
             // Si pulsamos el cursor izquierdo
             if (this.cursor.left.isDown) {
                 // Movemos al jugador a la izquierda
@@ -216,18 +218,18 @@ var GameModule;
                 this.player.body.velocity.y = -320;
             }
         };
-        MainState.prototype.muerte = function () {
-            this.game.state.start('main');
+        PlayState.prototype.muerte = function () {
+            this.game.state.start('menu');
         };
         ;
-        MainState.prototype.cogerMoneda = function (jugador, moneda) {
+        PlayState.prototype.cogerMoneda = function (jugador, moneda) {
             this.cambiaPosicionMoneda();
             // Incrementamos la puntuación
-            this.puntos += 5;
+            this.global.puntos += 5;
             // Actualizamos la etiqueta con la puntuación
-            this.etiquetaPuntos.text = 'puntos: ' + this.puntos;
+            this.etiquetaPuntos.text = 'puntos: ' + this.global.puntos;
         };
-        MainState.prototype.cambiaPosicionMoneda = function () {
+        PlayState.prototype.cambiaPosicionMoneda = function () {
             // Creamos un array con todas las posibles posiciones que podrà tomar la moneda
             var posiciones = [
                 new Point(140, 60), new Point(360, 60),
@@ -249,21 +251,23 @@ var GameModule;
             // Situamos la moneda en la nueva posición.
             this.moneda.reset(newPosition.x, newPosition.y);
         };
-        return MainState;
+        return PlayState;
     })(Phaser.State);
-    var SimpleGame = (function () {
+    var SimpleGame = (function (_super) {
+        __extends(SimpleGame, _super);
         function SimpleGame() {
-            this.game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
-            this.game["global"] = {
+            _super.call(this, 500, 340, Phaser.AUTO, "gameDiv");
+            this.global = {
                 puntos: 0
             };
-            this.game.state.add("boot", BootState);
-            this.game.state.add("load", LoadState);
-            this.game.state.add("menu", MenuState);
-            this.game.state.start("boot");
+            this.state.add("boot", BootState);
+            this.state.add("load", LoadState);
+            this.state.add("menu", MenuState);
+            this.state.add("play", PlayState);
+            this.state.start("boot");
         }
         return SimpleGame;
-    })();
+    })(Phaser.Game);
     GameModule.SimpleGame = SimpleGame;
 })(GameModule || (GameModule = {}));
 window.onload = function () {
