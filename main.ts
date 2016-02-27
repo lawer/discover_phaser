@@ -8,6 +8,9 @@ module GameModule {
         cursor: Phaser.CursorKeys;
         paredes: Phaser.Group;
         moneda: Phaser.Sprite;
+        etiquetaPuntos: Phaser.Text;
+        puntos: number;
+
 
         preload():void {
             super.preload();
@@ -80,6 +83,11 @@ module GameModule {
 
             // Cambiamos el "anchor" de la moneda al centro
             this.moneda.anchor.setTo(0.5, 0.5);
+
+            // Muestra la puntuación
+            this.etiquetaPuntos = game.add.text(30, 30, 'score: 0', { font: '18px Arial', fill: '#ffffff' });
+            // Incializa la variable con la puntuación
+            this.puntos = 0;
         }
 
 
