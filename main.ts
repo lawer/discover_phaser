@@ -70,7 +70,7 @@ module GameModule {
             var scoreLabel = this.add.text(
                 this.world.centerX,
                 this.world.centerY,
-                'puntos: ' + this.game["global"].puntos,
+                'puntos: ' + this.game.global.puntos,
                 { font: '25px Arial', fill: '#ffffff' }
             );
             scoreLabel.anchor.setTo(0.5, 0.5);
@@ -97,13 +97,12 @@ module GameModule {
         }
     }
 
-    class MainState extends Phaser.State {
+    class PlayState extends Phaser.State {
         player:Phaser.Sprite;
         cursor:Phaser.CursorKeys;
         paredes:Phaser.Group;
         moneda:Phaser.Sprite;
         etiquetaPuntos:Phaser.Text;
-        puntos:number;
         private enemigos:Phaser.Group;
 
         create():void {
@@ -181,7 +180,7 @@ module GameModule {
             // Muestra la puntuación
             this.etiquetaPuntos = this.add.text(30, 30, 'puntos: 0', {font: '18px Arial', fill: '#ffffff'});
             // Incializa la variable con la puntuación
-            this.puntos = 0;
+            this.game.global.puntos = 0;
         };
 
         private creaEnemigos() {
@@ -259,17 +258,17 @@ module GameModule {
         }
 
         private muerte() {
-            this.game.state.start('main');
+            this.game.state.start('menu');
         };
 
         private cogerMoneda(jugador:Phaser.Sprite, moneda:Phaser.Sprite) {
             this.cambiaPosicionMoneda();
 
             // Incrementamos la puntuación
-            this.puntos += 5;
+            this.game.global.puntos += 5;
 
             // Actualizamos la etiqueta con la puntuación
-            this.etiquetaPuntos.text = 'puntos: ' + this.puntos;
+            this.etiquetaPuntos.text = 'puntos: ' + this.game.global.puntos;
         }
 
         private cambiaPosicionMoneda() {
@@ -300,22 +299,22 @@ module GameModule {
 
     }
 
-    export class SimpleGame {
-        game:Phaser.Game;
+    export class SimpleGame extends Phaser.Game {
+        global:any;
 
         constructor() {
-            this.game = new Phaser.Game(500, 340, Phaser.AUTO, "gameDiv");
+            super(500, 340, Phaser.AUTO, "gameDiv");
 
-            this.game["global"] = {
+            this.global = {
                 puntos: 0
             };
 
-            this.game.state.add("boot", BootState);
-            this.game.state.add("load", LoadState);
-            this.game.state.add("menu", MenuState);
+            this.state.add("boot", BootState);
+            this.state.add("load", LoadState);
+            this.state.add("menu", MenuState);
+            this.state.add("play", PlayState);
 
-
-            this.game.state.start("boot");
+            this.state.start("boot");
         }
     }
 }

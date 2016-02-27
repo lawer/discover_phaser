@@ -49,8 +49,8 @@
       <file leaf-file-name="main.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="12.716536">
-              <caret line="314" column="51" selection-start-line="314" selection-start-column="51" selection-end-line="314" selection-end-column="51" />
+            <state vertical-scroll-proportion="-0.28153846">
+              <caret line="281" column="66" selection-start-line="281" selection-start-column="66" selection-end-line="281" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -367,7 +367,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456612974259</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="MenuState">
+      <created>1456615449502</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1456615449502</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -394,7 +400,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20015885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39675516" sideWeight="0.52505964" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39675516" sideWeight="0.52505964" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -455,7 +461,8 @@
     <MESSAGE value="Agregamos los enemigos" />
     <MESSAGE value="Empezamos la separación en varios &quot;States&quot;" />
     <MESSAGE value="Creamos el estado de carga y la barra de progreso" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creamos el estado de carga y la barra de progreso" />
+    <MESSAGE value="MenuState" />
+    <option name="LAST_COMMIT_MESSAGE" value="MenuState" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -619,8 +626,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.716536">
-          <caret line="314" column="51" selection-start-line="314" selection-start-column="51" selection-end-line="314" selection-end-column="51" />
+        <state vertical-scroll-proportion="-0.28153846">
+          <caret line="281" column="66" selection-start-line="281" selection-start-column="66" selection-end-line="281" selection-end-column="66" />
           <folding />
         </state>
       </provider>
