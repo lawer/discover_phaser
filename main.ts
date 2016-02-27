@@ -85,7 +85,7 @@ module GameModule {
             this.moneda.anchor.setTo(0.5, 0.5);
 
             // Muestra la puntuación
-            this.etiquetaPuntos = game.add.text(30, 30, 'score: 0', { font: '18px Arial', fill: '#ffffff' });
+            this.etiquetaPuntos = game.add.text(30, 30, 'puntos: 0', { font: '18px Arial', fill: '#ffffff' });
             // Incializa la variable con la puntuación
             this.puntos = 0;
         }
@@ -125,11 +125,24 @@ module GameModule {
             if (!this.player.inWorld) {
                 this.muerte();
             }
+
+            game.physics.arcade.overlap(this.player, this.moneda, this.cogerMoneda, null, this);
         }
 
         private muerte() {
             game.state.start('main');
         };
+
+        private cogerMoneda(jugador:Phaser.Sprite, moneda:Phaser.Sprite) {
+            // La función "Kill" hace que la moneda desaparezca del juego
+            this.moneda.kill();
+
+            // Incrementamos la puntuación
+            this.puntos += 5;
+
+            // Actualizamos la etiqueta con la puntuación
+            this.etiquetaPuntos.text = 'puntos: ' + this.puntos;
+        }
     }
 
     export class SimpleGame {
