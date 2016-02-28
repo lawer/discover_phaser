@@ -1,12 +1,33 @@
-/// <reference path="phaser/phaser.d.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var GameModule;
-(function (GameModule) {
-    var Point = Phaser.Point;
+var Point = Phaser.Point;
+var MyGame;
+(function (MyGame) {
+    var SimpleGame = (function (_super) {
+        __extends(SimpleGame, _super);
+        function SimpleGame() {
+            _super.call(this, 500, 340, Phaser.AUTO, "gameDiv");
+            this.global = {
+                puntos: 0
+            };
+            this.state.add("boot", MyGame.BootState);
+            this.state.add("load", MyGame.LoadState);
+            this.state.add("menu", MyGame.MenuState);
+            this.state.add("play", MyGame.PlayState);
+            this.state.start("boot");
+        }
+        return SimpleGame;
+    })(Phaser.Game);
+    MyGame.SimpleGame = SimpleGame;
+})(MyGame || (MyGame = {}));
+window.onload = function () {
+    var game = new MyGame.SimpleGame();
+};
+var MyGame;
+(function (MyGame) {
     var BootState = (function (_super) {
         __extends(BootState, _super);
         function BootState() {
@@ -28,6 +49,10 @@ var GameModule;
         ;
         return BootState;
     })(Phaser.State);
+    MyGame.BootState = BootState;
+})(MyGame || (MyGame = {}));
+var MyGame;
+(function (MyGame) {
     var LoadState = (function (_super) {
         __extends(LoadState, _super);
         function LoadState() {
@@ -57,13 +82,17 @@ var GameModule;
         };
         return LoadState;
     })(Phaser.State);
+    MyGame.LoadState = LoadState;
+})(MyGame || (MyGame = {}));
+var MyGame;
+(function (MyGame) {
     var MenuState = (function (_super) {
         __extends(MenuState, _super);
         function MenuState() {
             _super.apply(this, arguments);
-            this.global = this.game.global;
         }
         MenuState.prototype.create = function () {
+            this.global = this.game.global;
             // Imagen de fondo
             this.add.image(0, 0, 'fondo');
             // Nombre del juego
@@ -86,14 +115,21 @@ var GameModule;
         };
         return MenuState;
     })(Phaser.State);
+    MyGame.MenuState = MenuState;
+})(MyGame || (MyGame = {}));
+/**
+ * Created by carlesgm on 28/2/16.
+ */
+var MyGame;
+(function (MyGame) {
     var PlayState = (function (_super) {
         __extends(PlayState, _super);
         function PlayState() {
             _super.apply(this, arguments);
-            this.global = this.game.global;
         }
         PlayState.prototype.create = function () {
             _super.prototype.create.call(this);
+            this.global = this.game.global;
             this.creaJugador();
             this.capturaCursores();
             this.crearMundo();
@@ -253,24 +289,6 @@ var GameModule;
         };
         return PlayState;
     })(Phaser.State);
-    var SimpleGame = (function (_super) {
-        __extends(SimpleGame, _super);
-        function SimpleGame() {
-            _super.call(this, 500, 340, Phaser.AUTO, "gameDiv");
-            this.global = {
-                puntos: 0
-            };
-            this.state.add("boot", BootState);
-            this.state.add("load", LoadState);
-            this.state.add("menu", MenuState);
-            this.state.add("play", PlayState);
-            this.state.start("boot");
-        }
-        return SimpleGame;
-    })(Phaser.Game);
-    GameModule.SimpleGame = SimpleGame;
-})(GameModule || (GameModule = {}));
-window.onload = function () {
-    var game = new GameModule.SimpleGame();
-};
-//# sourceMappingURL=main.js.map
+    MyGame.PlayState = PlayState;
+})(MyGame || (MyGame = {}));
+//# sourceMappingURL=generated.js.map

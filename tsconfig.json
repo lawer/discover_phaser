@@ -3,9 +3,15 @@
     "module": "commonjs",
     "sourceMap": true,
     "target": "es5",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "out": "generated.js"
   },
   "files": [
-    "main.ts"
+    "main.ts",
+    "BootState.ts",
+    "phaser/phaser.d.ts",
+    "LoadState.ts",
+    "MenuState.ts",
+    "PlayState.ts"
   ]
 }

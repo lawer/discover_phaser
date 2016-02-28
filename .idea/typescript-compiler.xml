@@ -3,5 +3,6 @@
   <component name="TypeScriptCompiler">
     <option name="isCompilerEnabled" value="true" />
     <option name="mainFilePath" value="$PROJECT_DIR$/app.ts" />
+    <option name="useConfig" value="true" />
   </component>
 </project>
